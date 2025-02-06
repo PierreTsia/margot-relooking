@@ -1,4 +1,6 @@
 ---
+import type { NetlifyUser } from '../types/netlify';
+
 interface Props {
   title: string;
   description?: string;
@@ -21,6 +23,28 @@ import '../styles/globals.css';
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/netlify-identity-widget@1/build/netlify-identity-widget.min.js"
     ></script>
+    <script>
+      interface NetlifyUser {
+        email: string;
+        app_metadata: {
+          provider: string;
+        };
+        user_metadata: {
+          avatar_url: string;
+          full_name: string;
+        };
+      }
+
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', (user: NetlifyUser | null) => {
+          if (!user) {
+            window.netlifyIdentity.on('login', () => {
+              document.location.href = '/admin/';
+            });
+          }
+        });
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -32,38 +56,24 @@ import '../styles/globals.css';
     <Header client:load />
     <slot />
     <script>
-      // Debug Netlify Identity
-      (window as any).netlifyIdentity.on('init', (user: any) => {
-        console.log('Netlify Identity initialized:', user);
-      });
-
-      (window as any).netlifyIdentity.on('error', (err: any) => {
-        console.error('Netlify Identity error:', err);
-      });
-
       if (
         window.location.hash &&
         window.location.hash.includes('invite_token')
       ) {
         const token = window.location.hash.split('=')[1];
-        console.log('Found invite token:', token);
 
         // Wait for netlifyIdentity to be available
         const checkIdentity = setInterval(() => {
           if ((window as any).netlifyIdentity) {
             clearInterval(checkIdentity);
-            console.log('Netlify Identity loaded');
 
             (window as any).netlifyIdentity.open();
             (window as any).netlifyIdentity.on('init', (user: any) => {
-              console.log('Init event, user:', user);
               if (!user) {
                 (window as any).netlifyIdentity.on('login', () => {
-                  console.log('Login successful, redirecting...');
                   document.location.href = '/admin/';
                 });
               } else {
-                console.log('User already logged in, redirecting...');
                 document.location.href = '/admin/';
               }
             });

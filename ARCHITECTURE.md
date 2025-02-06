@@ -25,6 +25,60 @@
 - Easy deployment options
 - Great i18n support for French content
 
+### Image Management
+
+**Two-Step Image Pipeline:**
+
+1. Upload & Storage (Decap CMS)
+  - Images uploaded via admin UI to `public/images/`
+  - Automatic filename generation with content hash
+  - Git-based storage (part of the repo)
+  - Basic optimization on upload
+
+2. Optimization & Delivery (Astro)
+  - Further optimization at build time
+  - Responsive image generation
+  - WebP conversion
+  - Lazy loading
+  - Blur-up placeholders
+
+**Implementation:**
+
+1. CMS Configuration:
+```yaml
+media_folder: 'public/images/blog'
+public_folder: '/images/blog'
+media_library:
+  max_file_size: 2000000 # 2MB
+  allowed_extensions: ['png', 'jpg', 'jpeg', 'webp']
+```
+
+2. Image Component:
+```tsx
+// src/components/ui/blog-image.tsx
+interface BlogImageProps {
+  src?: string;
+  alt: string;
+  className?: string;
+}
+```
+
+3. Directory Structure:
+```
+public/
+├── images/
+│   ├── blog/       # Blog post images
+│   ├── static/     # Site assets
+│   └── uploads/    # User uploads
+```
+
+**Best Practices:**
+- Enforce image size limits (2MB max)
+- Generate responsive sizes
+- Use semantic alt text
+- Implement loading="lazy"
+- Provide fallback images
+
 ### Content Management
 
 **Approach: Decap CMS**

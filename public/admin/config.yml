@@ -12,8 +12,14 @@ site_url: https://margot-relooking.netlify.app
 display_url: https://margot-relooking.netlify.app
 
 # Media handling
-media_folder: 'public/images'
-public_folder: '/images'
+media_folder: 'public/images/blog'
+public_folder: '/images/blog'
+media_library:
+  max_file_size: 2000000 # 2MB
+  allowed_extensions: ['png', 'jpg', 'jpeg', 'webp']
+  choose_url: false
+  config:
+    multiple: false
 
 # Content Collections
 collections:
@@ -37,12 +43,14 @@ collections:
           name: 'image',
           widget: 'image',
           required: false,
-          media_library: { config: { multiple: false } },
+          hint: 'Format recommandé: 1200x675px (16:9). Max 2MB.',
+          choose_url: false,
         }
       - { label: 'Contenu', name: 'body', widget: 'markdown' }
 
   - name: 'pages'
     label: 'Pages'
+    format: 'mdx'
     files:
       - file: 'src/content/pages/about.mdx'
         label: 'À propos'
@@ -50,4 +58,4 @@ collections:
         fields:
           - { label: 'Titre', name: 'title', widget: 'string' }
           - { label: 'Description', name: 'description', widget: 'text' }
-          - { label: 'Contenu', name: 'body', widget: 'markdown' }
+          - { label: 'Contenu', name: 'body', widget: 'mdx' }

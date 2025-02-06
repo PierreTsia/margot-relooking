@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { CollectionEntry } from 'astro:content';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { BlogImage } from '@/components/ui/blog-image';
 
 // Get latest blog posts
 const posts = await getCollection(
@@ -58,13 +59,10 @@ const latestPosts: CollectionEntry<'blog'>[] = posts
           {
             latestPosts.map((post) => (
               <Card>
-                <div class="aspect-[16/9] overflow-hidden rounded-t-lg">
-                  <img
-                    src={post.data.image || '/images/blog-placeholder.jpg'}
-                    alt={post.data.title}
-                    class="h-full w-full object-cover transition-all hover:scale-105"
-                  />
-                </div>
+                <BlogImage 
+                  src={post.data.image} 
+                  alt={post.data.title} 
+                />
                 <CardHeader>
                   <CardTitle className="font-display">
                     <a 
