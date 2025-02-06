@@ -17,9 +17,7 @@ import '../styles/globals.css';
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    {Astro.url.pathname === '/admin' && (
-      <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
-    )}
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -30,5 +28,18 @@ import '../styles/globals.css';
   <body class="bg-[hsl(40,33%,99%)] text-text-primary">
     <Header client:load />
     <slot />
+    <script>
+      if (window.location.hash && window.location.hash.includes('invite_token')) {
+        const token = window.location.hash.split('=')[1];
+        (window as any).netlifyIdentity.open();
+        (window as any).netlifyIdentity.on('init', (user: any) => {
+          if (!user) {
+            (window as any).netlifyIdentity.on('login', () => {
+              window.location.href = '/admin/';
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html> 
