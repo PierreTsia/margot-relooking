@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
-import { Lock, LogOut } from 'lucide-react';
+import { Lock, LogOut, Settings } from 'lucide-react';
 import { Button } from './ui/button';
 
 interface NetlifyUser {
@@ -89,6 +89,11 @@ export function Header() {
                       navigationMenuTriggerStyle(),
                       'bg-transparent px-2'
                     )}
+                  >
+                    <Settings className="h-4 w-4" />
+                  </NavigationMenuLink>
+                  <NavigationMenuLink
+                    className={cn(navigationMenuTriggerStyle(), 'bg-transparent px-2')}
                   >
                     <LogOut className="h-4 w-4" onClick={handleLogout} />
                   </NavigationMenuLink>
