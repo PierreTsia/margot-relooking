@@ -2,18 +2,15 @@ backend:
   name: github
   repo: PierreTsia/margot-relooking
   branch: main
-  base_url: https://api.netlify.com
-  client_id: Iv23liHUT3ej4SRNAzsU
+  base_url: http://localhost:8081
+  auth_endpoint: auth
+local_backend: true
 
-# These lines should match your deployment URL
-site_url: https://margot-relooking.netlify.app
-display_url: https://margot-relooking.netlify.app
+# These lines should match your local URL
+site_url: http://localhost:4321
+display_url: http://localhost:4321
 
-# Media handling
-media_folder: "public/images"
-public_folder: "/images"
-
-# Content Collections
+# Copy the rest of the collections config from the main config.yml
 collections:
   - name: "blog"
     label: "Articles"
