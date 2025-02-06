@@ -3,6 +3,7 @@ backend:
   repo: PierreTsia/margot-relooking
   branch: main
   base_url: https://api.netlify.com
+  client_id: Iv23liHUT3ej4SRNAzsU
 
 # These lines should match your deployment URL
 site_url: https://margot-relooking.netlify.app
