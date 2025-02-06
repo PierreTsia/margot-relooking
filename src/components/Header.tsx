@@ -9,20 +9,47 @@ import {
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
+interface NetlifyUser {
+  email: string;
+  app_metadata: {
+    provider: string;
+  };
+  user_metadata: {
+    avatar_url: string;
+    full_name: string;
+  };
+}
+
 const navItems = [
   { href: "/blog", label: "Articles" },
   { href: "/a-propos", label: "À propos" },
 ];
 
 export function Header() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<NetlifyUser | null>(null);
 
   useEffect(() => {
-    if ((window as any).netlifyIdentity) {
-      (window as any).netlifyIdentity.on("init", (user: any) => setUser(user));
-      (window as any).netlifyIdentity.on("login", (user: any) => setUser(user));
-      (window as any).netlifyIdentity.on("logout", () => setUser(null));
-    }
+    const checkIdentity = setInterval(() => {
+      if ((window as any).netlifyIdentity) {
+        clearInterval(checkIdentity);
+
+        (window as any).netlifyIdentity.on("init", (user: any) =>
+          setUser(user)
+        );
+        (window as any).netlifyIdentity.on("login", (user: any) =>
+          setUser(user)
+        );
+        (window as any).netlifyIdentity.on("logout", () => setUser(null));
+
+        // Check current user
+        const currentUser = (window as any).netlifyIdentity.currentUser();
+        if (currentUser) {
+          setUser(currentUser);
+        }
+      }
+    }, 100);
+
+    return () => clearInterval(checkIdentity);
   }, []);
 
   return (

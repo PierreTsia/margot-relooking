@@ -1,10 +1,5 @@
 backend:
-  name: github
-  repo: PierreTsia/margot-relooking
-  branch: main
-  base_url: http://localhost:8081
-  auth_endpoint: auth
-local_backend: true
+  name: test-repo
 
 # These lines should match your local URL
 site_url: http://localhost:4321
