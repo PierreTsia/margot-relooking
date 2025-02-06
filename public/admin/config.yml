@@ -2,8 +2,9 @@ backend:
   name: github
   repo: PierreTsia/margot-relooking
   branch: main
-  base_url: https://api.netlify.com
-  client_id: Iv23liHUT3ej4SRNAzsU
+  api_root: https://api.github.com
+  use_graphql: true
+  auth_type: git-gateway
 
 # These lines should match your deployment URL
 site_url: https://margot-relooking.netlify.app
