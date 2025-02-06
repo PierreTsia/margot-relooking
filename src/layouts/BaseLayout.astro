@@ -31,14 +31,29 @@ import '../styles/globals.css';
     <script>
       if (window.location.hash && window.location.hash.includes('invite_token')) {
         const token = window.location.hash.split('=')[1];
-        (window as any).netlifyIdentity.open();
-        (window as any).netlifyIdentity.on('init', (user: any) => {
-          if (!user) {
-            (window as any).netlifyIdentity.on('login', () => {
-              window.location.href = '/admin/';
+        console.log('Found invite token:', token);
+        
+        // Wait for netlifyIdentity to be available
+        const checkIdentity = setInterval(() => {
+          if ((window as any).netlifyIdentity) {
+            clearInterval(checkIdentity);
+            console.log('Netlify Identity loaded');
+            
+            (window as any).netlifyIdentity.open();
+            (window as any).netlifyIdentity.on('init', (user: any) => {
+              console.log('Init event, user:', user);
+              if (!user) {
+                (window as any).netlifyIdentity.on('login', () => {
+                  console.log('Login successful, redirecting...');
+                  document.location.href = '/admin/';
+                });
+              } else {
+                console.log('User already logged in, redirecting...');
+                document.location.href = '/admin/';
+              }
             });
           }
-        });
+        }, 100);
       }
     </script>
   </body>
