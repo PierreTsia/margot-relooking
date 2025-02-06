@@ -81,7 +81,6 @@
   export const theme = {
     colors: {
 
-     
      // "coloré" & "créatif": Playful palette
      primary: {
        DEFAULT: 'hsl(348, 83%, 81%)',     // Soft coral pink
@@ -196,19 +195,23 @@ src/
 ## 5. Development Phases
 
 ### Phase 1: Setup (30min)
-- [ ] Project initialization
-- [ ] Content structure
-- [ ] Basic layouts
+- [x] Project initialization
+- [x] Content structure
+- [x] Basic layouts
 
 ### Phase 2: Content (30min)
-- [ ] Import scraped content
+- [x] Import scraped content
 - [ ] Set up image pipeline
-- [ ] Basic styling
+- [x] Basic styling
+- [ ] cms setup
+
 
 ### Phase 3: Design (30min)
-- [ ] Theme implementation
-- [ ] Typography
+- [x] Theme implementation
+- [x] Typography
 - [ ] Responsive design
+- [ ] Advanced styling
+
 
 ### Phase 4: Polish (30min)
 - [ ] SEO optimization
@@ -217,13 +220,13 @@ src/
 - [ ] Testing
 
 ## 6. Questions to Resolve
-1. Do we need to maintain old URL structure for SEO?
-2. Any specific color palette preferences?
-3. Do we need search functionality?
-4. Analytics requirements?
+1. ✓ Do we need to maintain old URL structure for SEO? -> No, using simpler /blog/[slug]
+2. ✓ Any specific color palette preferences? -> Implemented in globals.css
+3. [ ] Do we need search functionality?
+4. [ ] Analytics requirements?
 
 ## 7. Future Considerations
-- Analytics integration if needed
-- Search functionality
-- More sophisticated editor interface
-- Multi-language support if needed 
+- [ ] Analytics integration if needed
+- [ ] Search functionality
+- [ ] More sophisticated editor interface
+- [ ] Multi-language support if needed 

@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 40 33% 99%;
+    --foreground: 348 25% 25%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 348 25% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 348 25% 25%;
+
+    /* Primary: Soft coral pink */
+    --primary: 348 83% 81%;
+    --primary-foreground: 348 83% 47%;
+
+    /* Secondary: Mint green */
+    --secondary: 169 65% 70%;
+    --secondary-foreground: 348 25% 25%;
+
+    /* Muted & Text */
+    --muted: 348 10% 95%;
+    --muted-foreground: 348 10% 60%;
+
+    /* Accent: Warm yellow */
+    --accent: 42 87% 85%;
+    --accent-foreground: 348 25% 25%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 348 10% 90%;
+    --input: 348 10% 90%;
+    --ring: 348 83% 81%;
+
+    --radius: 0.75rem;
+  }
+} 

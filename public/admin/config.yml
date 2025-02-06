@@ -1,0 +1,48 @@
+backend:
+  name: github
+  repo: your-github-username/margot-relooking
+  branch: main
+  base_url: https://api.netlify.com
+
+# These lines should match your deployment URL
+site_url: https://margotrelooking.com
+display_url: https://margotrelooking.com
+
+# Media handling
+media_folder: "public/images"
+public_folder: "/images"
+
+# Content Collections
+collections:
+  - name: "blog"
+    label: "Articles"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { 
+          label: "Image principale", 
+          name: "image", 
+          widget: "image", 
+          required: false,
+          media_library: {
+            config: {
+              multiple: false
+            }
+          }
+        }
+      - { label: "Contenu", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "src/content/pages/about.mdx"
+        label: "À propos"
+        name: "about"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Contenu", name: "body", widget: "markdown" } 

@@ -1,0 +1,38 @@
+---
+const navItems = [
+  { href: '/blog', label: 'Articles' },
+  { href: '/a-propos', label: 'À propos' },
+];
+
+// Get current path to highlight active nav item
+const currentPath = Astro.url.pathname;
+---
+
+<header class="border-b border-primary/10 sticky top-0 bg-[hsl(40,33%,99%)] bg-opacity-90 backdrop-blur-sm z-50">
+  <nav class="max-w-4xl mx-auto px-4 py-4">
+    <div class="flex justify-between items-center">
+      <a 
+        href="/" 
+        class="font-display text-xl text-primary-dark hover:text-primary transition-colors"
+      >
+        Margot Relooking
+      </a>
+
+      <ul class="flex space-x-6">
+        {navItems.map(({ href, label }) => (
+          <li>
+            <a
+              href={href}
+              class:list={[
+                'text-text-secondary hover:text-primary transition-colors',
+                { 'text-primary font-medium': currentPath.startsWith(href) }
+              ]}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+</header> 

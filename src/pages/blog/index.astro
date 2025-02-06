@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import BlogCard from '../../components/BlogCard.astro';
+
+const posts = await getCollection('blog');
+posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout 
+  title="Blog - Margot Relooking"
+  description="Articles sur le relooking et conseil en image"
+>
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="font-display text-4xl text-primary-dark mb-12">
+      Articles
+    </h1>
+    
+    <div class="grid gap-8 md:grid-cols-2">
+      {posts.map(post => (
+        <BlogCard
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.date}
+          url={`/blog/${post.slug}`}
+          image={post.data.image}
+        />
+      ))}
+    </div>
+  </main>
+</BaseLayout> 

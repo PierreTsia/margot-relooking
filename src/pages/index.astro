@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Button } from '@/components/ui/button';
+---
+
+<BaseLayout 
+  title="Margot Relooking" 
+  description="Conseils en image et relooking personnalisé"
+>
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <h1 class="font-display text-4xl text-primary-dark">
+      Margot Relooking
+    </h1>
+    <p class="mt-4 text-lg text-text-secondary">
+      Bienvenue sur mon blog dédié au relooking et conseil en image.
+    </p>
+    <div class="mt-8 flex gap-4">
+      <Button>
+        Voir les articles
+      </Button>
+      <Button 
+        className="bg-secondary hover:bg-secondary/90"
+      >
+        Me contacter
+      </Button>
+    </div>
+  </main>
+</BaseLayout> 
