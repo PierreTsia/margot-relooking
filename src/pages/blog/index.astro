@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const posts = await getCollection('blog', ({ data }) => {
@@ -7,28 +7,37 @@ const posts = await getCollection('blog', ({ data }) => {
 });
 
 // Sort by date
-const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const sortedPosts: CollectionEntry<'blog'>[] = posts.sort(
+  (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 ---
 
 <BaseLayout title="Blog - Margot Relooking">
-  <main class="max-w-4xl mx-auto px-4 py-8">
-    <h1 class="font-display text-4xl mb-8">Articles</h1>
+  <main class="mx-auto max-w-4xl px-4 py-8">
+    <h1 class="mb-8 font-display text-4xl">Articles</h1>
     <div class="grid gap-8">
-      {sortedPosts.map((post) => (
-        <article class="border rounded-lg p-6">
-          <h2 class="font-display text-2xl">
-            <a href={`/blog/${post.slug}`} class="hover:text-primary">
-              {post.data.title}
-            </a>
-          </h2>
-          {post.data.description && (
-            <p class="mt-2 text-text-secondary">{post.data.description}</p>
-          )}
-          <time class="text-sm text-text-muted">
-            {post.data.date.toLocaleDateString('fr-FR')}
-          </time>
-        </article>
-      ))}
+      {
+        sortedPosts.map((post) => (
+          <article class="group">
+            {post.data.image && (
+              <img
+                src={post.data.image}
+                alt={post.data.title}
+                class="mb-4 aspect-[4/3] rounded-lg object-cover transition-opacity group-hover:opacity-90"
+              />
+            )}
+            <h3 class="mb-2 font-display text-xl group-hover:text-primary">
+              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+            </h3>
+            {post.data.description && (
+              <p class="line-clamp-2 text-muted-foreground">
+                {post.data.description}
+              </p>
+            )}
+          </article>
+        ))
+      }
     </div>
   </main>
-</BaseLayout> 
+</BaseLayout>
+

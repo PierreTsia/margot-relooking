@@ -1,28 +1,97 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Button } from '@/components/ui/button';
+import { getCollection } from 'astro:content';
+import { LinkButton } from '@/components/ui/link-button';
+import { ArrowRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import type { CollectionEntry } from 'astro:content';
+import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+
+// Get latest blog posts
+const posts = await getCollection(
+  'blog',
+  ({ data }: CollectionEntry<'blog'>) => {
+    return import.meta.env.DEV || !data.draft;
+  }
+);
+const latestPosts: CollectionEntry<'blog'>[] = posts
+  .sort(
+    (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
+      b.data.date.valueOf() - a.data.date.valueOf()
+  )
+  .slice(0, 3);
 ---
 
-<BaseLayout 
-  title="Margot Relooking" 
-  description="Conseils en image et relooking personnalisé"
+<BaseLayout
+  title="Margot Relooking - Conseil en Image Personnelle"
+  description="Révélez votre meilleure version avec Margot Relooking, votre conseillère en image personnelle"
 >
-  <main class="max-w-4xl mx-auto px-4 py-8">
-    <h1 class="font-display text-4xl text-primary-dark">
-      Margot Relooking
-    </h1>
-    <p class="mt-4 text-lg text-text-secondary">
-      Bienvenue sur mon blog dédié au relooking et conseil en image.
-    </p>
-    <div class="mt-8 flex gap-4">
-      <Button>
-        Voir les articles
-      </Button>
-      <Button 
-        className="bg-secondary hover:bg-secondary/90"
-      >
-        Me contacter
-      </Button>
-    </div>
+  <main>
+    <!-- Hero Section -->
+    <section
+      class="relative bg-gradient-to-b from-background via-background/95 to-pink-50/30 py-20"
+    >
+      <div class="mx-auto max-w-4xl px-4">
+        <div class="text-center">
+          <h1 class="mb-6 font-display text-4xl md:text-6xl">
+            Révélez votre <span class="text-primary">meilleure version</span>
+          </h1>
+          <p
+            class="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground md:text-xl"
+          >
+            Découvrez comment valoriser votre image naturelle et développer
+            votre confiance en vous avec un accompagnement personnalisé.
+          </p>
+          <div class="flex justify-center gap-4">
+            <LinkButton href="/a-propos" variant="outline"> En savoir plus </LinkButton>
+            <LinkButton href="/blog"> Voir les articles </LinkButton>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Articles -->
+    <section class="py-20">
+      <div class="mx-auto max-w-4xl px-4">
+        <h2 class="font-display text-3xl mb-12">Derniers Articles</h2>
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            latestPosts.map((post) => (
+              <Card>
+                <div class="aspect-[16/9] overflow-hidden rounded-t-lg">
+                  <img
+                    src={post.data.image || '/images/blog-placeholder.jpg'}
+                    alt={post.data.title}
+                    class="h-full w-full object-cover transition-all hover:scale-105"
+                  />
+                </div>
+                <CardHeader>
+                  <CardTitle className="font-display">
+                    <a 
+                      href={`/blog/${post.slug}`}
+                      class="hover:text-primary transition-colors"
+                    >
+                      {post.data.title}
+                    </a>
+                  </CardTitle>
+                  {post.data.description && (
+                    <CardDescription className="line-clamp-2">
+                      {post.data.description}
+                    </CardDescription>
+                  )}
+                </CardHeader>
+              </Card>
+            ))
+          }
+        </div>
+        <div class="mt-12 text-center">
+          <LinkButton href="/blog" variant="outline">
+            Tous les articles
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </LinkButton>
+        </div>
+      </div>
+    </section>
   </main>
-</BaseLayout> 
+</BaseLayout>
+

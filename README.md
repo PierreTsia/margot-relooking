@@ -5,13 +5,12 @@ This is a simple v2 of an old existing blog : https://margotrelooking.wordpress.
 I need to find a fast and easy way to scrap the old blog and get the content
 
 2. new blog specs design
-I want to spend less than 2 hours to build this blog.
-I do not want any third party services (or bare minimum and free)
-I want it to be SEO optimized and acessible
-I am considering mardown based cms but I am open to proposals : the "writer" will be a non tech person so it should be easy to use, and french speaker friendly 
-I want a simple flow to publish new content
-I want a simple way of handling images : ensure only optimized assets are served
-
+   I want to spend less than 2 hours to build this blog.
+   I do not want any third party services (or bare minimum and free)
+   I want it to be SEO optimized and acessible
+   I am considering mardown based cms but I am open to proposals : the "writer" will be a non tech person so it should be easy to use, and french speaker friendly
+   I want a simple flow to publish new content
+   I want a simple way of handling images : ensure only optimized assets are served
 
 For the design : should be "doux", 'coloré', 'joyeux' 'creatif' 'smart'
 
@@ -36,8 +35,3 @@ J’aime énormément les vêtements, les accessoires, la beauté, le maquillage
 
 Et puis, puisque je vous parle de moi et que ce sera beaucoup le cas sur ce blog (comme toute bonne blogueuse qui se respecte 😉 ), je dois ajouter qu’il y a des choses qui me tiennent vraiment à coeur et que j’essaie toujours de transmettre aux personnes qui me font confiance et décident de travailler avec moi pour un relooking: consommer moins, consommer mieux. Se lancer dans le concept de la « slow fashion », dont le but est de « favoriser une consommation plus réfléchie et plus responsable. Des collections de vêtements conçus pour allier mode, qualité et possibilité de conservation par l’acheteur, au minimum d’une saison sur l’autre. »
 ```
-
-
-
-
-

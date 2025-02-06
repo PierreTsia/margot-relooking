@@ -5,38 +5,38 @@
 @layer base {
   :root {
     /* Base colors */
-    --background: 40 33% 99%;
-    --foreground: 348 25% 25%;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 348 25% 25%;
+    --card-foreground: 240 10% 3.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 348 25% 25%;
+    --popover-foreground: 240 10% 3.9%;
 
     /* Primary: Soft coral pink */
-    --primary: 348 83% 81%;
-    --primary-foreground: 348 83% 47%;
+    --primary: 346 77% 49%;
+    --primary-foreground: 355.7 100% 97.3%;
 
     /* Secondary: Mint green */
-    --secondary: 169 65% 70%;
-    --secondary-foreground: 348 25% 25%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
 
     /* Muted & Text */
-    --muted: 348 10% 95%;
-    --muted-foreground: 348 10% 60%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
 
     /* Accent: Warm yellow */
-    --accent: 42 87% 85%;
-    --accent-foreground: 348 25% 25%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 348 10% 90%;
-    --input: 348 10% 90%;
-    --ring: 348 83% 81%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 346 77% 49%;
 
     --radius: 0.75rem;
   }
-} 
+}

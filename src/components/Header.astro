@@ -8,31 +8,36 @@ const navItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="border-b border-primary/10 sticky top-0 bg-[hsl(40,33%,99%)] bg-opacity-90 backdrop-blur-sm z-50">
-  <nav class="max-w-4xl mx-auto px-4 py-4">
-    <div class="flex justify-between items-center">
-      <a 
-        href="/" 
-        class="font-display text-xl text-primary-dark hover:text-primary transition-colors"
+<header
+  class="sticky top-0 z-50 border-b border-primary/10 bg-[hsl(40,33%,99%)] bg-opacity-90 backdrop-blur-sm"
+>
+  <nav class="mx-auto max-w-4xl px-4 py-4">
+    <div class="flex items-center justify-between">
+      <a
+        href="/"
+        class="text-primary-dark font-display text-xl transition-colors hover:text-primary"
       >
         Margot Relooking
       </a>
 
       <ul class="flex space-x-6">
-        {navItems.map(({ href, label }) => (
-          <li>
-            <a
-              href={href}
-              class:list={[
-                'text-text-secondary hover:text-primary transition-colors',
-                { 'text-primary font-medium': currentPath.startsWith(href) }
-              ]}
-            >
-              {label}
-            </a>
-          </li>
-        ))}
+        {
+          navItems.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class:list={[
+                  'text-text-secondary transition-colors hover:text-primary',
+                  { 'font-medium text-primary': currentPath.startsWith(href) },
+                ]}
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </nav>
-</header> 
+</header>
+

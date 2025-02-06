@@ -22,7 +22,8 @@ Je l’ai accompagnée rencontrer Amélie, une super coloriste, qui travaille da
 
  
 
-    [    ](https://margotrelooking.wordpress.com/2018/04/23/relooking-julie/31180210_10156155498155941_2751007977077997568_n/)      [    ](https://margotrelooking.wordpress.com/2018/04/23/relooking-julie/31124331_10156155497555941_2595624478444617728_n/)      [    ](https://margotrelooking.wordpress.com/2018/04/23/relooking-julie/31124625_10156155497495941_2931392488931328_n/)      
+    [    ](https://margotrelooking.wordpress.com/2018/04/23/relooking-julie/31180210_10156155498155941_2751007977077997568_n/)      [    ](https://margotrelooking.wordpress.com/2018/04/23/relooking-julie/31124331_10156155497555941_2595624478444617728_n/)      [    ](https://margotrelooking.wordpress.com/2018/04/23/relooking-julie/31124625_10156155497495941_2931392488931328_n/)
+
 ![30085437_2010867289154088_6394507688658599936_n](/images/30085437_2010867289154088_6394507688658599936_n-aHR0cHM6.jpg)
 
  

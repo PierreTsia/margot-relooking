@@ -8,17 +8,20 @@
     "cms": "npx netlify-cms-proxy-server",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@astrojs/mdx": "^2.3.1",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.5",
     "@radix-ui/react-navigation-menu": "^1.2.5",
+    "@radix-ui/react-slot": "^1.1.2",
     "astro": "^4.0.0",
     "astro-seo": "^0.8.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.0",
+    "lucide-react": "^0.474.0",
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7"

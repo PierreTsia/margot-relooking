@@ -1,0 +1,16 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const about = await getEntry('pages', 'about');
+const { Content } = await about.render();
+---
+
+<BaseLayout title={about.data.title} description={about.data.description}>
+  <main class="mx-auto max-w-4xl px-4 py-8">
+    <article class="prose prose-slate mx-auto">
+      <Content />
+    </article>
+  </main>
+</BaseLayout>
+

@@ -4,49 +4,50 @@ backend:
   branch: main
 
 # Enable Netlify Identity integration
-identity_url: "https://margot-relooking.netlify.app/.netlify/identity"
-gateway_url: "https://margot-relooking.netlify.app/.netlify/git/github"
+identity_url: 'https://margot-relooking.netlify.app/.netlify/identity'
+gateway_url: 'https://margot-relooking.netlify.app/.netlify/git/github'
 
 # These lines should match your deployment URL
 site_url: https://margot-relooking.netlify.app
 display_url: https://margot-relooking.netlify.app
 
 # Media handling
-media_folder: "public/images"
-public_folder: "/images"
+media_folder: 'public/images'
+public_folder: '/images'
 
 # Content Collections
 collections:
-  - name: "blog"
-    label: "Articles"
-    folder: "src/content/blog"
+  - name: 'blog'
+    label: 'Articles'
+    folder: 'src/content/blog'
     create: true
-    slug: "{{slug}}"
+    slug: '{{slug}}'
     fields:
-      - { label: "Titre", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text", required: false }
-      - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Brouillon", name: "draft", widget: "boolean", default: true }
-      - { 
-          label: "Image principale", 
-          name: "image", 
-          widget: "image", 
+      - { label: 'Titre', name: 'title', widget: 'string' }
+      - {
+          label: 'Description',
+          name: 'description',
+          widget: 'text',
           required: false,
-          media_library: {
-            config: {
-              multiple: false
-            }
-          }
         }
-      - { label: "Contenu", name: "body", widget: "markdown" }
+      - { label: 'Date', name: 'date', widget: 'datetime' }
+      - { label: 'Brouillon', name: 'draft', widget: 'boolean', default: true }
+      - {
+          label: 'Image principale',
+          name: 'image',
+          widget: 'image',
+          required: false,
+          media_library: { config: { multiple: false } },
+        }
+      - { label: 'Contenu', name: 'body', widget: 'markdown' }
 
-  - name: "pages"
-    label: "Pages"
+  - name: 'pages'
+    label: 'Pages'
     files:
-      - file: "src/content/pages/about.mdx"
-        label: "À propos"
-        name: "about"
+      - file: 'src/content/pages/about.mdx'
+        label: 'À propos'
+        name: 'about'
         fields:
-          - { label: "Titre", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-          - { label: "Contenu", name: "body", widget: "markdown" } 
+          - { label: 'Titre', name: 'title', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'text' }
+          - { label: 'Contenu', name: 'body', widget: 'markdown' }

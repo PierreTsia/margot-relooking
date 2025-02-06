@@ -1,13 +1,15 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
+} from '@/components/ui/navigation-menu';
+import { cn } from '@/lib/utils';
+import { useEffect, useState } from 'react';
+import { Lock, LogOut } from 'lucide-react';
+import { Button } from './ui/button';
 
 interface NetlifyUser {
   email: string;
@@ -21,25 +23,29 @@ interface NetlifyUser {
 }
 
 const navItems = [
-  { href: "/blog", label: "Articles" },
-  { href: "/a-propos", label: "À propos" },
+  { href: '/blog', label: 'Articles' },
+  { href: '/a-propos', label: 'À propos' },
 ];
 
 export function Header() {
   const [user, setUser] = useState<NetlifyUser | null>(null);
+
+  const handleLogout = () => {
+    (window as any).netlifyIdentity.logout();
+  };
 
   useEffect(() => {
     const checkIdentity = setInterval(() => {
       if ((window as any).netlifyIdentity) {
         clearInterval(checkIdentity);
 
-        (window as any).netlifyIdentity.on("init", (user: any) =>
+        (window as any).netlifyIdentity.on('init', (user: any) =>
           setUser(user)
         );
-        (window as any).netlifyIdentity.on("login", (user: any) =>
+        (window as any).netlifyIdentity.on('login', (user: any) =>
           setUser(user)
         );
-        (window as any).netlifyIdentity.on("logout", () => setUser(null));
+        (window as any).netlifyIdentity.on('logout', () => setUser(null));
 
         // Check current user
         const currentUser = (window as any).netlifyIdentity.currentUser();
@@ -53,11 +59,11 @@ export function Header() {
   }, []);
 
   return (
-    <header className="border-b border-primary/10 sticky top-0 bg-background/80 backdrop-blur-sm z-50">
-      <div className="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+    <header className="sticky top-0 z-50 border-b border-primary/10 bg-background/80 backdrop-blur-sm">
+      <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4">
         <a
           href="/"
-          className="font-display text-xl text-primary hover:text-primary/90 transition-colors"
+          className="font-display text-xl text-primary transition-colors hover:text-primary/90"
         >
           Margot Relooking
         </a>
@@ -68,22 +74,35 @@ export function Header() {
               <NavigationMenuItem key={href}>
                 <NavigationMenuLink
                   href={href}
-                  className={cn(navigationMenuTriggerStyle(), "bg-transparent")}
+                  className={cn(navigationMenuTriggerStyle(), 'bg-transparent')}
                 >
                   {label}
                 </NavigationMenuLink>
               </NavigationMenuItem>
             ))}
-            {user && (
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="/admin"
-                  className={cn(navigationMenuTriggerStyle(), "bg-transparent")}
+            <NavigationMenuItem>
+              {user ? (
+                <div className="flex items-center gap-2">
+                  <NavigationMenuLink
+                    href="/admin"
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      'bg-transparent px-2'
+                    )}
+                  >
+                    <LogOut className="h-4 w-4" onClick={handleLogout} />
+                  </NavigationMenuLink>
+                </div>
+              ) : (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => (window as any).netlifyIdentity.open()}
                 >
-                  Admin
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            )}
+                  <Lock className="h-4 w-4" />
+                </Button>
+              )}
+            </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
       </div>

@@ -1,6 +1,7 @@
 # Margot Relooking - Architecture & Technical Choices
 
 ## 1. Core Requirements (from README)
+
 - Migration from WordPress blog
 - Build time < 2 hours
 - Minimal third-party services
@@ -13,7 +14,9 @@
 ## 2. Technical Stack
 
 ### Framework: Astro
+
 **Why Astro?**
+
 - Zero-JS by default = ultra fast loading
 - Built-in Markdown/MDX support
 - Excellent image optimization
@@ -23,7 +26,9 @@
 - Great i18n support for French content
 
 ### Content Management
+
 **Approach: Decap CMS**
+
 - Adds `/admin` route for content management
 - Authentication via GitHub
 - Visual editor in French
@@ -32,36 +37,40 @@
 - Still Git-based (but hides complexity)
 
 **Setup Requirements:**
+
 1. Two files needed:
+
    ```
    public/admin/index.html  # The admin panel entry
    public/admin/config.yml  # CMS configuration
    ```
 
 2. Basic config example:
+
    ```yaml
    backend:
      name: github
      repo: owner/repo
      branch: main
-   
-   media_folder: "public/images"
-   public_folder: "/images"
-   
+
+   media_folder: 'public/images'
+   public_folder: '/images'
+
    collections:
-     - name: "blog"
-       label: "Articles"
-       folder: "src/content/blog"
+     - name: 'blog'
+       label: 'Articles'
+       folder: 'src/content/blog'
        create: true
-       slug: "{{slug}}"
+       slug: '{{slug}}'
        fields:
-         - { label: "Titre", name: "title", widget: "string" }
-         - { label: "Date", name: "date", widget: "datetime" }
-         - { label: "Image", name: "image", widget: "image" }
-         - { label: "Contenu", name: "body", widget: "markdown" }
+         - { label: 'Titre', name: 'title', widget: 'string' }
+         - { label: 'Date', name: 'date', widget: 'datetime' }
+         - { label: 'Image', name: 'image', widget: 'image' }
+         - { label: 'Contenu', name: 'body', widget: 'markdown' }
    ```
 
 **Publishing Workflow:**
+
 1. Author visits yourblog.com/admin
 2. Logs in with GitHub
 3. Uses visual editor to write/edit content
@@ -69,53 +78,55 @@
 5. Clicks publish
 
 ### Styling
+
 **Approach: Tailwind CSS**
 **Base: Tailwind CSS + shadcn/ui**
+
 - Tailwind for utility-first styling
 - shadcn/ui for accessible, customizable components
 - Built on top of Radix UI primitives
 
   **Theme Structure:**
+
   ```ts
   // src/lib/themes.ts
   export const theme = {
     colors: {
+      // "coloré" & "créatif": Playful palette
+      primary: {
+        DEFAULT: 'hsl(348, 83%, 81%)', // Soft coral pink
+        light: 'hsl(348, 83%, 90%)',
+        dark: 'hsl(348, 83%, 47%)',
+      },
+      accent: {
+        1: 'hsl(169, 65%, 70%)', // Mint green
+        2: 'hsl(42, 87%, 85%)', // Warm yellow
+        3: 'hsl(261, 47%, 82%)', // Soft lavender
+      },
 
-     // "coloré" & "créatif": Playful palette
-     primary: {
-       DEFAULT: 'hsl(348, 83%, 81%)',     // Soft coral pink
-       light: 'hsl(348, 83%, 90%)',
-       dark: 'hsl(348, 83%, 47%)',
-     },
-     accent: {
-       1: 'hsl(169, 65%, 70%)',           // Mint green
-       2: 'hsl(42, 87%, 85%)',            // Warm yellow
-       3: 'hsl(261, 47%, 82%)',           // Soft lavender
-     },
-     
-     // "smart": Professional text colors
-     text: {
-       primary: 'hsl(348, 25%, 25%)',     // Warm dark grey
-       secondary: 'hsl(348, 15%, 45%)',
-       muted: 'hsl(348, 10%, 60%)',
-     }
+      // "smart": Professional text colors
+      text: {
+        primary: 'hsl(348, 25%, 25%)', // Warm dark grey
+        secondary: 'hsl(348, 15%, 45%)',
+        muted: 'hsl(348, 10%, 60%)',
+      },
     },
     fonts: {
-
-     // "créatif" & "smart": Modern but friendly typography
-     sans: ['Cabinet Grotesk', 'system-ui'],  // Modern, friendly
-     serif: ['Gambetta', 'Georgia'],          // Elegant, soft
-     display: ['Roslindale', 'serif']         // Creative headlines
+      // "créatif" & "smart": Modern but friendly typography
+      sans: ['Cabinet Grotesk', 'system-ui'], // Modern, friendly
+      serif: ['Gambetta', 'Georgia'], // Elegant, soft
+      display: ['Roslindale', 'serif'], // Creative headlines
     },
     // Soft shadows for depth without harshness
     shadows: {
       sm: '0 2px 8px hsl(348, 83%, 81%, 0.07)',
       md: '0 4px 12px hsl(348, 83%, 81%, 0.1)',
-    }
-  }
+    },
+  };
   ```
 
 The reasoning:
+
 - **Base**: Warm cream/eggshell backgrounds for "doux"
 - **Primary**: Soft coral pink - both joyful and sophisticated
 - **Accents**: A trio of soft but playful colors for "coloré" & "créatif"
@@ -123,10 +134,12 @@ The reasoning:
 - **Shadows**: Very soft, warm shadows to maintain the "doux" feeling
 
 This palette creates a warm, inviting space while maintaining professionalism. Want me to:
+
 1. Show some example component styling with this palette?
 2. Or adjust any of the colors?
 
 **Key Components from shadcn/ui:**
+
 - Card - For article previews
 - Navigation Menu - For header
 - Carousel - For image galleries
@@ -134,6 +147,7 @@ This palette creates a warm, inviting space while maintaining professionalism. W
 - Form elements - For admin interface
 
 ### Image Pipeline
+
 - Use Astro's built-in image optimization
 - Automatic WebP conversion
 - Lazy loading by default
@@ -143,6 +157,7 @@ This palette creates a warm, inviting space while maintaining professionalism. W
 **Two-step Image Optimization:**
 
 1. CMS Upload (Decap CMS)
+
    - Images uploaded via admin UI to `public/images/`
    - Automatic optimization on upload
    - Generates unique filenames
@@ -156,11 +171,13 @@ This palette creates a warm, inviting space while maintaining professionalism. W
    - Uses `<Image />` component for optimal delivery
 
 **Example Usage:**
+
 ```astro
 ---
 import { Image } from 'astro:assets';
 ---
-<Image 
+
+<Image
   src="/images/uploaded-image.jpg"
   alt="Description"
   width={800}
@@ -170,6 +187,7 @@ import { Image } from 'astro:assets';
 ```
 
 ### SEO Strategy
+
 - Semantic HTML structure
 - Auto-generated meta tags
 - Built-in sitemap
@@ -177,6 +195,7 @@ import { Image } from 'astro:assets';
 - Optimized for Core Web Vitals
 
 ## 3. Project Structure
+
 ```
 src/
 ├── components/      # Reusable UI components
@@ -188,6 +207,7 @@ src/
 ```
 
 ## 4. URL Structure
+
 - Simple: `/blog/[slug]`
 - No date in URL for cleaner links
 - Redirects from old WordPress URLs if needed
@@ -195,38 +215,42 @@ src/
 ## 5. Development Phases
 
 ### Phase 1: Setup (30min)
+
 - [x] Project initialization
 - [x] Content structure
 - [x] Basic layouts
 
 ### Phase 2: Content (30min)
+
 - [x] Import scraped content
 - [ ] Set up image pipeline
 - [x] Basic styling
 - [ ] cms setup
 
-
 ### Phase 3: Design (30min)
+
 - [x] Theme implementation
 - [x] Typography
 - [ ] Responsive design
 - [ ] Advanced styling
 
-
 ### Phase 4: Polish (30min)
+
 - [ ] SEO optimization
 - [ ] RSS/Sitemap
 - [ ] Documentation
 - [ ] Testing
 
 ## 6. Questions to Resolve
+
 1. ✓ Do we need to maintain old URL structure for SEO? -> No, using simpler /blog/[slug]
 2. ✓ Any specific color palette preferences? -> Implemented in globals.css
 3. [ ] Do we need search functionality?
 4. [ ] Analytics requirements?
 
 ## 7. Future Considerations
+
 - [ ] Analytics integration if needed
 - [ ] Search functionality
 - [ ] More sophisticated editor interface
-- [ ] Multi-language support if needed 
+- [ ] Multi-language support if needed
