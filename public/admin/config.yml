@@ -1,12 +1,12 @@
 backend:
   name: github
-  repo: your-github-username/margot-relooking
+  repo: PierreTsia/margot-relooking
   branch: main
   base_url: https://api.netlify.com
 
 # These lines should match your deployment URL
-site_url: https://margotrelooking.com
-display_url: https://margotrelooking.com
+site_url: https://margot-relooking.netlify.app
+display_url: https://margot-relooking.netlify.app
 
 # Media handling
 media_folder: "public/images"
