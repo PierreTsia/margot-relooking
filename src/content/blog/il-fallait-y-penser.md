@@ -26,9 +26,8 @@ Comme promis, voici mon article consacré à la **merveilleuse team** [@dresswi
     • FASHION DETOX
     Parce qu'on n'y voit plus rien pardi ! On range ses placards et on trie au moins 2 fois par an
     • VIVRE LA MODE SANS LA POSSÉDER
-    Parce qu'on n'est pas obligé de dépenser un bras pour une robe qu'on ne porte q'une fois
-
-  * [\#fashion](https://www.instagram.com/explore/tags/fashion/) [\#love](https://www.instagram.com/explore/tags/love/) [\#dresswing ](https://www.instagram.com/explore/tags/dresswing/)[\#dressing](https://www.instagram.com/explore/tags/dressing/) [\#louerlamode](https://www.instagram.com/explore/tags/louerlamode/) [\#rentfashion ](https://www.instagram.com/explore/tags/rentfashion/)[\#sharefashion](https://www.instagram.com/explore/tags/sharefashion/) [\#location](https://www.instagram.com/explore/tags/location/) [\#fashiondetox ](https://www.instagram.com/explore/tags/fashiondetox/)[\#moderesponsable](https://www.instagram.com/explore/tags/moderesponsable/) [\#sustainablefashion ](https://www.instagram.com/explore/tags/sustainablefashion/)[\#slowfashion](https://www.instagram.com/explore/tags/slowfashion/) [\#livefashion](https://www.instagram.com/explore/tags/livefashion/)
+    Parce qu'on n'est pas obligé de dépenser un bras pour une robe qu'on ne porte q'une fois[](https://www.instagram.com/explore/tags/fashion/)[](https://www.instagram.com/explore/tags/love/)[](https://www.instagram.com/explore/tags/dresswing/)[](https://www.instagram.com/explore/tags/dressing/)[](https://www.instagram.com/explore/tags/louerlamode/)[](https://www.instagram.com/explore/tags/rentfashion/)[](https://www.instagram.com/explore/tags/sharefashion/)[](https://www.instagram.com/explore/tags/location/)[](https://www.instagram.com/explore/tags/fashiondetox/)[](https://www.instagram.com/explore/tags/moderesponsable/)[](https://www.instagram.com/explore/tags/sustainablefashion/)[](https://www.instagram.com/explore/tags/slowfashion/)[](https://www.instagram.com/explore/tags/livefashion/)
+  *
 
 **Pourquoi j'ai tout de suite été séduite?** Parce que je me suis reconnue dans chaque point évoqué. Que je suis une Parisienne accroc à la mode, qui a, par le passé (parce que oui, c'est de l'histoire ancienne maintenant : #TeamEcolo ) beaucoup trop acheté, sur-consommé les fringues, les chaussures, les accessoires…
 
