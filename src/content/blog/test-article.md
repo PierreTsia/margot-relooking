@@ -3,7 +3,7 @@ title: Je peux même éditer depuis mon téléphone
 description: Coucou
 date: 2024-03-17T23:00:00.000Z
 draft: false
-image: /images/blog/screenshot-2024-03-18-at-00.01.33.png
+image: /images/blog/create_a_modern-_minimalist_tech_logo_for__n.c3_st-2-.jpeg
 ---
 
 # Test
