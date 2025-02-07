@@ -6,7 +6,7 @@ description: Découvrez Dresswing, une solution innovante de location de
   l'achat de tenues de cérémonie.
 date: 2024-03-17T23:00:00.000Z
 draft: false
-image: ""
+image: /images/blog/20180425_032547-ahr0chm6.png
 ---
 Comme promis, voici mon article consacré à la **merveilleuse team** [@dresswing_fr](https://www.instagram.com/dresswing_fr/) et l’expérience que j’ai pu en faire. Toujours dans l’idée de **moins** et **mieux** **consommer**, ces filles là ont eu une sacrée bonne idée! Leur concept:
 
