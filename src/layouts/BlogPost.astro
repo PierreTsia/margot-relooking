@@ -6,6 +6,7 @@ import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import BlogCard from '@/components/blog-card.astro';
 import { Card } from '@/components/ui/card';
+import { BlogNavigation } from '@/components/blog-navigation';
 
 interface Props {
   title: string;
@@ -38,85 +39,63 @@ const relatedPosts = allPosts
   description={description}
   image={image}
 >
-  <main class="mx-auto max-w-3xl px-4 py-12">
-    <article class="prose prose-lg">
-      <header class="mb-8">
-        <h1 class="text-primary-dark mb-4 font-display text-4xl">
-          {title}
-        </h1>
-        <time class="text-text-secondary" datetime={date.toISOString()}>
-          {
-            new Date(date).toLocaleDateString('fr-FR', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })
-          }
-        </time>
-      </header>
+  <main class="py-12">
+    <div class="mx-auto max-w-4xl px-4">
+      <article class="prose prose-lg">
+        <header class="mb-8">
+          <h1 class="text-primary-dark mb-4 font-display text-4xl">
+            {title}
+          </h1>
+          <time class="text-text-secondary" datetime={date.toISOString()}>
+            {
+              new Date(date).toLocaleDateString('fr-FR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })
+            }
+          </time>
+        </header>
 
-      {
-        image && (
-          <Image
-            src={image}
-            alt=""
-            width={800}
-            height={400}
-            class="mb-8 rounded-lg"
-          />
-        )
-      }
+        {
+          image && (
+            <Image
+              src={image}
+              alt=""
+              width={800}
+              height={400}
+              class="mb-8 rounded-lg"
+            />
+          )
+        }
 
-      <div class="prose prose-lg prose-pink">
-        <slot />
-      </div>
-      <nav class="mt-8 flex flex-col gap-4 border-t border-primary/5 pt-8 sm:flex-row sm:justify-between">
-        <div class="flex-1">
-          {prevPost && (
-            <a href={`/blog/${prevPost.slug}`} class="group flex items-center gap-2 hover:text-primary">
-              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-              <span class="flex flex-col items-start gap-0.5 justify-center">
-                <span class="text-xs text-muted-foreground">Article précédent</span>
-                <span class="text-sm">{prevPost.data.title}</span>
-              </span>
-            </a>
-          )}
+        <div class="prose prose-lg prose-pink">
+          <slot />
         </div>
-        <a href="/blog" class="group flex items-center gap-1.5 text-sm hover:text-primary self-center mx-4">
-          <BookOpen className="h-4 w-4" />
-          <span>Voir tous</span>
-        </a>
-        <div class="flex-1 flex justify-end">
-          {nextPost && (
-            <a href={`/blog/${nextPost.slug}`} class="group flex items-center gap-2 hover:text-primary">
-              <span class="flex flex-col items-end gap-0.5 justify-center">
-                <span class="text-xs text-muted-foreground">Article suivant</span>
-                <span class="text-sm">{nextPost.data.title}</span>
-              </span>
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-          )}
-        </div>
-      </nav>
 
-      {relatedPosts.length > 0 && (
-        <div class="mt-12 border-t border-primary/5 pt-8">
-          <h2 class="text-xl font-display mb-6">Articles similaires</h2>
-          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <nav class="mt-12 flex flex-col gap-4 border-t border-primary/5 pt-8 sm:flex-row sm:justify-between min-w-full">
+          <BlogNavigation prevPost={prevPost} nextPost={nextPost} />
+        </nav>
+      </article>
+    </div>
+
+    {relatedPosts.length > 0 && (
+      <div class="relative mt-24 bg-primary/[0.03]">
+        <div class="mx-auto max-w-4xl px-4 py-16">
+          <h2 class="text-2xl font-display mb-8">Articles similaires</h2>
+          <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {relatedPosts.map(post => (
-              <Card client:load>
-                <BlogCard 
-                  post={post} 
-                  showTags={false} 
-                  showMeta={false} 
-                  compact 
-                />
-              </Card>
+              <BlogCard 
+                post={post} 
+                showTags={false} 
+                showMeta={false} 
+                compact 
+              />
             ))}
           </div>
         </div>
-      )}
-    </article>
+      </div>
+    )}
   </main>
 </BaseLayout>
 
