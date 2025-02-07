@@ -320,9 +320,9 @@ src/
   - [ ] Tag-based filtering and search
 
 ### Navigation & UX
-- [ ] Article Navigation
-  - [ ] Next/Previous article buttons
-  - [ ] Back to blog/home buttons
+- [x] Article Navigation
+  - [x] Next/Previous article buttons
+  - [x] Back to blog/home buttons
   - [ ] Related articles by tag
 
 ### Content & Layout

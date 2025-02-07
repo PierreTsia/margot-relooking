@@ -1,15 +1,21 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import { Image } from 'astro:assets';
+import { ArrowRight, BookOpen, ArrowLeft } from 'lucide-react';
+import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   title: string;
   date: Date;
   image?: string;
   description: string;
+  tags?: string[];
+  prevPost?: CollectionEntry<'blog'>;
+  nextPost?: CollectionEntry<'blog'>;
 }
 
-const { title, date, image, description } = Astro.props;
+const { title, date, image, description, tags, prevPost, nextPost } = Astro.props;
+
 ---
 
 <BaseLayout title={title} description={description}>
@@ -45,6 +51,34 @@ const { title, date, image, description } = Astro.props;
       <div class="prose prose-lg prose-pink">
         <slot />
       </div>
+      <nav class="mt-8 flex flex-col gap-4 border-t border-primary/5 pt-8 sm:flex-row sm:justify-between">
+        <div class="flex-1">
+          {prevPost && (
+            <a href={`/blog/${prevPost.slug}`} class="group flex items-center gap-2 hover:text-primary">
+              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+              <span class="flex flex-col items-start gap-0.5 justify-center">
+                <span class="text-xs text-muted-foreground">Article précédent</span>
+                <span class="text-sm">{prevPost.data.title}</span>
+              </span>
+            </a>
+          )}
+        </div>
+        <a href="/blog" class="group flex items-center gap-1.5 text-sm hover:text-primary self-center mx-4">
+          <BookOpen className="h-4 w-4" />
+          <span>Voir tous</span>
+        </a>
+        <div class="flex-1 flex justify-end">
+          {nextPost && (
+            <a href={`/blog/${nextPost.slug}`} class="group flex items-center gap-2 hover:text-primary">
+              <span class="flex flex-col items-end gap-0.5 justify-center">
+                <span class="text-xs text-muted-foreground">Article suivant</span>
+                <span class="text-sm">{nextPost.data.title}</span>
+              </span>
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          )}
+        </div>
+      </nav>
     </article>
   </main>
 </BaseLayout>

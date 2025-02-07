@@ -13,21 +13,26 @@ export async function getStaticPaths() {
       post,
       prevPost: sortedPosts[index + 1],
       nextPost: sortedPosts[index - 1],
+      debug: {
+        total: posts.length,
+        current: index,
+        hasPrev: !!sortedPosts[index + 1],
+        hasNext: !!sortedPosts[index - 1]
+      }
     },
   }));
 }
 
-const { post, prevPost, nextPost } = Astro.props;
+const { post, prevPost, nextPost, debug } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BlogPost {...post.data}>
+<BlogPost 
+  {...post.data}
+  prevPost={prevPost}
+  nextPost={nextPost}
+  debug={debug}
+>
   <Content />
-  <ArticleNavigation 
-    client:load
-    prevPost={prevPost}
-    nextPost={nextPost}
-    currentTags={post.data.tags}
-  />
 </BlogPost>
 

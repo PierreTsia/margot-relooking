@@ -9,6 +9,7 @@ interface ArticleNavigationProps {
 }
 
 export function ArticleNavigation({ prevPost, nextPost, currentTags }: ArticleNavigationProps) {
+  console.log('====>',prevPost, nextPost, currentTags);
   return (
     <nav className="mt-8 flex flex-col gap-4 border-t border-primary/5 pt-8 sm:flex-row sm:justify-between">
       {prevPost ? (

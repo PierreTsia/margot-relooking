@@ -19,6 +19,8 @@ const sortedPosts: CollectionEntry<'blog'>[] = posts.sort(
   (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 
+
+
 // Split posts into featured and regular
 const [firstPost, secondPost, ...regularPosts] = sortedPosts;
 ---
