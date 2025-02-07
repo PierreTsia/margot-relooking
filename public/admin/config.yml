@@ -25,6 +25,14 @@ media_library:
 
 # Content Collections
 collections:
+  - name: 'media'
+    label: 'Media'
+    folder: 'public/images/blog'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - { label: 'Image', name: 'image', widget: 'image' }
+
   - name: 'blog'
     label: 'Articles'
     folder: 'src/content/blog'
