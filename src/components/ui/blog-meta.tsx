@@ -11,7 +11,7 @@ interface BlogMetaProps {
 
 export function BlogMeta({ author, date, showStats = false, content = '' }: BlogMetaProps) {
   return (
-    <div className="flex items-center gap-2.5 mt-2 text-xs text-muted-foreground/70">
+    <div className="flex items-center gap-[6px] sm:gap-2.5 mt-2 text-xs text-muted-foreground/70">
       {author && (
         <>
           <Avatar className="h-4 w-4">
@@ -23,11 +23,11 @@ export function BlogMeta({ author, date, showStats = false, content = '' }: Blog
           <span>{author}</span>
         </>
       )}
-     <span className="text-primary text-muted-foreground/50">•</span>
+      <span className="text-primary text-muted-foreground/50">•</span>
       <time dateTime={date.toISOString()}>
         {new Date(date).toLocaleDateString('fr-FR', {
-          year: 'numeric',
-          month: 'long',
+          year: '2-digit',
+          month: 'short',
           day: 'numeric',
         })}
       </time>
