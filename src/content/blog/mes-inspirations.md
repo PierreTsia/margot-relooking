@@ -1,13 +1,15 @@
 ---
 title: Mes inspirations
 description: Les femmes m'ont toujours inspirée
+tags: ["Inspiration", "Féminisme", "Style", "Icônes"]
+author: "Margot"
 date: 2025-02-06T22:52:00.000Z
 draft: false
 image: /images/blog/xsimone-de-beauvoir-1024x671-jpeg-pagespeed-ic-esrfld7fgb-ahr0chm6.jpg
 ---
-*Les femmes m’ont toujours inspirée…**
+*Les femmes m'ont toujours inspirée…**
 
-À commencer par ma mère: l’unique, la première, la dernière, l’éternelle femme de ma vie.
+À commencer par ma mère: l'unique, la première, la dernière, l'éternelle femme de ma vie.
 
 Et puis…
 

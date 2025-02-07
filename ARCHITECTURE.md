@@ -281,19 +281,27 @@ src/
 - [x] Basic styling
 - [ ] cms setup
 
-### Phase 3: Design (30min)
+### Phase 3: Design System Implementation (2h)
+- [x] Font system setup
+  - Cabinet Grotesk for body text
+  - Playfair Display for headings
+- [x] Component architecture
+  - LinkButton with proper TypeScript types
+  - Card system for blog posts
+  - Responsive image handling
+- [x] Layout structure
+  - BaseLayout with proper meta tags
+  - Header component with navigation
 
-- [x] Theme implementation
-- [x] Typography
-- [ ] Responsive design
-- [ ] Advanced styling
-
-### Phase 4: Polish (30min)
-
-- [ ] SEO optimization
-- [ ] RSS/Sitemap
-- [ ] Documentation
-- [ ] Testing
+### Phase 4: CMS Integration (1h)
+- [x] Decap CMS setup
+  - Production config
+  - Development config for local testing
+- [x] Netlify Identity integration
+- [x] Content modeling
+  - Blog posts collection
+  - About page structure
+  - Flexible content blocks
 
 ## 6. Questions to Resolve
 
@@ -302,9 +310,42 @@ src/
 3. [ ] Do we need search functionality?
 4. [ ] Analytics requirements?
 
-## 7. Future Considerations
+## 7. Next Features
+
+### Blog Enhancements
+- [ ] Article Metadata
+  - [ ] Reading time calculation
+  - [ ] Word count display
+  - [ ] Tags system implementation
+  - [ ] Tag-based filtering and search
+
+### Navigation & UX
+- [ ] Article Navigation
+  - [ ] Next/Previous article buttons
+  - [ ] Back to blog/home buttons
+  - [ ] Related articles by tag
+
+### Content & Layout
+- [ ] Enhanced Blog Layout
+  - [ ] Blog Index Improvements
+    - [ ] 2-3 Grid Layout (2 featured, 3 columns after)
+    - [ ] Modern card design without shadows
+    - [ ] Hover text animation effects
+    - [ ] Author and tags metadata display
+  - [ ] Rich text styling (blockquotes, lists)
+  - [ ] Image galleries and figure captions
+- [ ] Contact Page
+  - [ ] Contact form implementation
+  - [ ] Form validation
+  - [ ] Email notification setup
+  - [ ] Success/Error handling
+
+## 8. Future Considerations
 
 - [ ] Analytics integration if needed
 - [ ] Search functionality
 - [ ] More sophisticated editor interface
 - [ ] Multi-language support if needed
+- [ ] Newsletter integration
+- [ ] Social sharing buttons
+- [ ] Comments system

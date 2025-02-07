@@ -23,6 +23,21 @@ collections:
       - { label: 'Date', name: 'date', widget: 'datetime' }
       - { label: 'Brouillon', name: 'draft', widget: 'boolean', default: true }
       - {
+          label: 'Auteur',
+          name: 'author',
+          widget: 'string',
+          required: false,
+          default: 'Margot'
+        }
+      - {
+          label: 'Tags',
+          name: 'tags',
+          widget: 'list',
+          required: false,
+          field: { label: 'Tag', name: 'tag', widget: 'string' },
+          hint: 'Ajoutez des tags pour catégoriser votre article'
+        }
+      - {
           label: 'Image principale',
           name: 'image',
           widget: 'image',
