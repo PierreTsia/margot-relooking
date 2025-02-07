@@ -1,13 +1,15 @@
 import { Calendar } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from './avatar';
+import { ReadingStats } from './reading-stats';
 
 interface BlogMetaProps {
   author?: string;
   date: Date;
   showStats?: boolean;
+  content?: string;
 }
 
-export function BlogMeta({ author, date, showStats = false }: BlogMetaProps) {
+export function BlogMeta({ author, date, showStats = false, content = '' }: BlogMetaProps) {
   return (
     <div className="flex items-center gap-2.5 mt-2 text-xs text-muted-foreground/70">
       {author && (
@@ -29,14 +31,7 @@ export function BlogMeta({ author, date, showStats = false }: BlogMetaProps) {
           day: 'numeric',
         })}
       </time>
-      {showStats && (
-        <>
-          <span className="text-primary text-muted-foreground/50">•</span>
-          <span>5 min de lecture</span>
-          <span className="text-primary text-muted-foreground/50">•</span>
-          <span>1,250 mots</span>
-        </>
-      )}
+      {showStats && content && <ReadingStats content={content} />}
     </div>
   );
 } 
