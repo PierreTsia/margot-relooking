@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+---
+
+<BaseLayout 
+  title="Contact - Margot Relooking" 
+  description="Contactez-moi pour toute question sur mes services de conseil en image"
+>
+  <main class="mx-auto max-w-2xl px-4 py-12">
+    <h1 class="mb-8 font-display text-4xl">Contact</h1>
+    
+    <form 
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      data-netlify-recaptcha="true"
+      action="/success"
+      class="space-y-8"
+    >
+      {/* Hidden field for Netlify */}
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="notify" value="pierre.tsiakkaros@gmail.com" />
+      <p class="hidden">
+        <label>
+          Don't fill this out if you're human: <input name="bot-field" />
+        </label>
+      </p>
+
+      <div class="space-y-2">
+        <Label htmlFor="name" client:load>Nom</Label>
+        <Input 
+          client:load
+          id="name" 
+          name="name" 
+          type="text" 
+          required 
+          placeholder="Votre nom"
+        />
+      </div>
+
+      <div class="space-y-2">
+        <Label htmlFor="email" client:load>Email</Label>
+        <Input 
+          client:load
+          id="email" 
+          name="email" 
+          type="email" 
+          required 
+          placeholder="votre@email.fr"
+        />
+      </div>
+
+      <div class="space-y-2">
+        <Label htmlFor="subject" client:load>Sujet</Label>
+        <Input 
+          client:load
+          id="subject" 
+          name="subject" 
+          type="text" 
+          required 
+          placeholder="Sujet de votre message"
+        />
+      </div>
+
+      <div class="space-y-2">
+        <Label htmlFor="message" client:load>Message</Label>
+        <Textarea 
+          client:load
+          id="message" 
+          name="message" 
+          required 
+          placeholder="Votre message..."
+          rows={6}
+        />
+      </div>
+
+      <Button 
+        type="submit" 
+        client:load 
+        disabled 
+        id="submit-button"
+        className="w-full sm:w-auto mt-4"
+      >
+        Envoyer
+      </Button>
+    </form>
+
+    <script>
+      // Form validation
+      const form = document.querySelector('form');
+      const submitButton = document.getElementById('submit-button');
+      const requiredFields = form?.querySelectorAll('[required]');
+      
+      function checkFormValidity() {
+        if (!form || !submitButton || !requiredFields) return;
+        
+        const isValid = Array.from(requiredFields).every((field) => {
+          const input = field as HTMLInputElement | HTMLTextAreaElement;
+          return input.value.trim() !== '';
+        });
+        
+        submitButton.removeAttribute('disabled');
+        if (!isValid) {
+          submitButton.setAttribute('disabled', '');
+        }
+      }
+      
+      // Add input event listeners to all required fields
+      requiredFields?.forEach((field) => {
+        field.addEventListener('input', checkFormValidity);
+      });
+
+      // Handle form submission
+      form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const button = form.querySelector('button');
+        const originalText = button?.innerHTML || '';
+        if (button) button.innerHTML = 'Envoi en cours...';
+
+        try {
+          const formData = new FormData(form);
+          await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData as any).toString(),
+          });
+          
+          // Success message
+          form.innerHTML = `
+            <div class="text-center py-12">
+              <h2 class="text-2xl font-display mb-4">Message envoyé !</h2>
+              <p class="text-muted-foreground">Je vous répondrai dans les plus brefs délais.</p>
+            </div>
+          `;
+        } catch (error) {
+          // Error handling
+          if (button) button.innerHTML = originalText;
+          alert('Une erreur est survenue. Veuillez réessayer.');
+        }
+      });
+    </script>
+  </main>
+</BaseLayout> 

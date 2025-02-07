@@ -10,7 +10,9 @@ export default defineConfig({
   integrations: [
     react(), // Enable React for all .jsx/.tsx files
     mdx(),
-    tailwind(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
     sitemap(),
   ],
 });
