@@ -8,7 +8,7 @@ const blog = defineCollection({
     date: z.date(),
     image: z.string(),
     draft: z.boolean().default(false),
-    author: z.string().default('Margot'),
+    author: z.string().default('Margot Pierre'),
     tags: z.array(z.string()).default([]),
   }),
 });

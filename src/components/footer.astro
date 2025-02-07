@@ -1,0 +1,90 @@
+---
+import { Instagram, Mail } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+
+const currentYear = new Date().getFullYear()
+
+const legalLinks = [
+  { name: 'Mentions légales', href: '/mentions-legales' },
+  { name: 'Politique de confidentialité', href: '/privacy' },
+]
+
+const socialLinks = [
+  { 
+    name: 'Instagram',
+    href: 'https://instagram.com/margot_relooking',
+    icon: Instagram 
+  },
+  { 
+    name: 'Email',
+    href: 'mailto:contact@margot-relooking.fr',
+    icon: Mail 
+  },
+]
+---
+
+<footer class="mt-24 bg-primary/10 text-foreground">
+  <div class="mx-auto max-w-7xl px-4 py-16">
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Brand */}
+      <div class="flex flex-col gap-4">
+        <h3 class="font-display text-2xl">Margot Relooking</h3>
+        <p class="text-muted-foreground text-sm">
+          Conseils en image et relooking personnalisé pour révéler votre style unique.
+        </p>
+      </div>
+
+      {/* Quick Links */}
+      <div>
+        <h4 class="font-medium mb-4">Navigation</h4>
+        <ul class="space-y-2">
+          <li><a href="/blog" class="text-muted-foreground hover:text-primary transition-colors">Blog</a></li>
+          <li><a href="/a-propos" class="text-muted-foreground hover:text-primary transition-colors">À propos</a></li>
+          <li><a href="/contact" class="text-muted-foreground hover:text-primary transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      {/* Legal */}
+      <div>
+        <h4 class="font-medium mb-4">Informations légales</h4>
+        <ul class="space-y-2">
+          {legalLinks.map(link => (
+            <li>
+              <a 
+                href={link.href} 
+                class="text-muted-foreground hover:text-primary transition-colors"
+              >
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Social */}
+      <div>
+        <h4 class="font-medium mb-4">Suivez-moi</h4>
+        <div class="flex gap-2">
+          {socialLinks.map(({ name, href, icon: Icon }) => (
+            <a 
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Button size="icon" variant="secondary" client:load>
+                <Icon className="h-5 w-5" />
+                <span class="sr-only">{name}</span>
+              </Button>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* Copyright */}
+    <div class="mt-16 border-t border-primary/10 pt-8 text-center text-sm text-muted-foreground">
+      <p>© {currentYear} Margot Relooking. Tous droits réservés.</p>
+    </div>
+  </div>
+</footer> 

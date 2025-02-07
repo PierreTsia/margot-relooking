@@ -7,6 +7,7 @@ import { getCollection } from 'astro:content';
 import BlogCard from '@/components/blog-card.astro';
 import { Card } from '@/components/ui/card';
 import { BlogNavigation } from '@/components/blog-navigation';
+import { BlogAuthor } from '@/components/blog-author';
 
 interface Props {
   title: string;
@@ -16,9 +17,10 @@ interface Props {
   tags?: string[];
   prevPost?: CollectionEntry<'blog'>;
   nextPost?: CollectionEntry<'blog'>;
+  author: string;
 }
 
-const { title, date, image, description, tags = [], prevPost, nextPost } = Astro.props;
+const { title, date, image, description, tags = [], prevPost, nextPost, author } = Astro.props;
 
 // Get related posts by shared tags
 const allPosts = await getCollection('blog');
@@ -42,19 +44,11 @@ const relatedPosts = allPosts
   <main class="py-12">
     <div class="mx-auto max-w-4xl px-4">
       <article class="prose prose-lg">
-        <header class="mb-8">
-          <h1 class="text-primary-dark mb-4 font-display text-4xl">
+        <header class="not-prose mb-12">
+          <h1 class="text-4xl font-display mb-8">
             {title}
           </h1>
-          <time class="text-text-secondary" datetime={date.toISOString()}>
-            {
-              new Date(date).toLocaleDateString('fr-FR', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })
-            }
-          </time>
+          <BlogAuthor client:load author={author} date={date} />
         </header>
 
         {
@@ -64,7 +58,7 @@ const relatedPosts = allPosts
               alt=""
               width={800}
               height={400}
-              class="mb-8 rounded-lg"
+              class="mb-12 rounded-lg"
             />
           )
         }
