@@ -2,11 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { LinkButton } from '@/components/ui/link-button';
-import { ArrowRight } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 import type { CollectionEntry } from 'astro:content';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BlogImage } from '@/components/ui/blog-image';
+import { ScrollIndicator } from '@/components/ui/scroll-indicator';
 
 // Get latest blog posts
 const posts = await getCollection(
@@ -30,15 +30,28 @@ const latestPosts: CollectionEntry<'blog'>[] = posts
   <main>
     <!-- Hero Section -->
     <section
-      class="relative bg-gradient-to-b from-background via-background/95 to-pink-50/30 py-20"
+      class="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden bg-gradient-to-b from-background via-background/90 to-pink-50/20 isolate before:absolute before:inset-0 before:z-0 before:bg-[radial-gradient(circle_at_0%_0%,rgba(219,39,119,0.05),transparent_50%)]"
     >
-      <div class="mx-auto max-w-4xl px-4">
+      <!-- Decorative elements -->
+      <div class="absolute inset-0 z-0">
+        <div class="absolute left-0 top-1/2 -translate-y-1/2 opacity-[0.08] md:-translate-x-32">
+          <img
+            src="/images/static/hero-deco.svg"
+            alt=""
+            class="h-[400px] w-[400px] rotate-12 md:h-[800px] md:w-[800px]"
+          />
+        </div>
+        <div class="absolute left-0 top-0 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-[0.12]">
+        </div>
+      </div>
+
+      <div class="relative z-10 mx-auto max-w-4xl px-4">
         <div class="text-center">
           <h1 class="mb-6 font-display text-4xl md:text-6xl">
             Révélez votre <span class="text-primary">meilleure version</span>
           </h1>
           <p
-            class="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground md:text-xl"
+            class="mx-auto mb-12 max-w-2xl text-lg text-muted-foreground/90 md:text-xl"
           >
             Découvrez comment valoriser votre image naturelle et développer
             votre confiance en vous avec un accompagnement personnalisé.
@@ -52,7 +65,7 @@ const latestPosts: CollectionEntry<'blog'>[] = posts
     </section>
 
     <!-- Latest Articles -->
-    <section class="py-20">
+    <section id="articles" class="py-20 scroll-mt-8">
       <div class="mx-auto max-w-4xl px-4">
         <h2 class="font-display text-3xl mb-12">Derniers Articles</h2>
         <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -90,6 +103,8 @@ const latestPosts: CollectionEntry<'blog'>[] = posts
         </div>
       </div>
     </section>
+
+    <ScrollIndicator client:load />
   </main>
 </BaseLayout>
 
