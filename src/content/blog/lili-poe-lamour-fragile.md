@@ -5,7 +5,7 @@ description: Découvrez l'univers stylistique unique de Lili Poe, une artiste qu
   sur son style inimitable et son premier album à venir.
 date: 2018-05-08T11:34:50+00:00
 draft: false
-author: Margot
+author: Margot Pierre
 tags:
   - Style
   - Mode
