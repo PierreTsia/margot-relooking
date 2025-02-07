@@ -277,9 +277,9 @@ src/
 ### Phase 2: Content (30min)
 
 - [x] Import scraped content
-- [ ] Set up image pipeline
+- [x] Set up image pipeline
 - [x] Basic styling
-- [ ] cms setup
+- [x] cms setup
 
 ### Phase 3: Design System Implementation (2h)
 - [x] Font system setup
@@ -323,7 +323,7 @@ src/
 - [x] Article Navigation
   - [x] Next/Previous article buttons
   - [x] Back to blog/home buttons
-  - [ ] Related articles by tag
+  - [x] Related articles by tag
 
 ### Content & Layout
 - [ ] Enhanced Blog Layout

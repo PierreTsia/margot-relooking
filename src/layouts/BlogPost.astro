@@ -3,6 +3,9 @@ import BaseLayout from './BaseLayout.astro';
 import { Image } from 'astro:assets';
 import { ArrowRight, BookOpen, ArrowLeft } from 'lucide-react';
 import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import BlogCard from '@/components/blog-card.astro';
+import { Card } from '@/components/ui/card';
 
 interface Props {
   title: string;
@@ -14,7 +17,19 @@ interface Props {
   nextPost?: CollectionEntry<'blog'>;
 }
 
-const { title, date, image, description, tags, prevPost, nextPost } = Astro.props;
+const { title, date, image, description, tags = [], prevPost, nextPost } = Astro.props;
+
+// Get related posts by shared tags
+const allPosts = await getCollection('blog');
+const relatedPosts = allPosts
+  .filter(post => 
+    // Exclude current post and drafts
+    post.data.title !== title && !post.data.draft &&
+    // Must share at least one tag
+    post.data.tags?.some(tag => tags.includes(tag))
+  )
+  .sort(() => Math.random() - 0.5) // Randomize order
+  .slice(0, 3); // Take up to 3 related posts
 
 ---
 
@@ -79,6 +94,24 @@ const { title, date, image, description, tags, prevPost, nextPost } = Astro.prop
           )}
         </div>
       </nav>
+
+      {relatedPosts.length > 0 && (
+        <div class="mt-12 border-t border-primary/5 pt-8">
+          <h2 class="text-xl font-display mb-6">Articles similaires</h2>
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {relatedPosts.map(post => (
+              <Card client:load>
+                <BlogCard 
+                  post={post} 
+                  showTags={false} 
+                  showMeta={false} 
+                  compact 
+                />
+              </Card>
+            ))}
+          </div>
+        </div>
+      )}
     </article>
   </main>
 </BaseLayout>

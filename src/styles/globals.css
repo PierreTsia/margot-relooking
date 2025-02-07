@@ -14,28 +14,31 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    /* Primary: Soft coral pink */
-    --primary: 346 77% 49%;
-    --primary-foreground: 355.7 100% 97.3%;
+    /* Primary: Soft coral pink - Adjusted for better contrast */
+    --primary: 348 83% 40%;          /* Even darker for better contrast */
+    --primary-light: 348 83% 81%;    /* Original soft coral for decorative elements */
+    --primary-dark: 348 83% 25%;     /* Much darker for text */
+    --primary-foreground: 348 10% 95%; /* Very light for text on primary background */
 
     /* Secondary: Mint green */
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+    --secondary: 169 65% 45%;        /* Darker mint for better contrast */
+    --secondary-foreground: 169 10% 95%;
 
     /* Muted & Text */
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
 
-    /* Accent: Warm yellow */
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    /* Accents */
+    --accent-mint: 169 65% 45%;    /* Darker mint */
+    --accent-yellow: 42 87% 85%;   /* Warm yellow */
+    --accent-lavender: 261 47% 82%; /* Soft lavender */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 346 77% 49%;
+    --ring: 348 83% 47%;           /* Match primary */
 
     --radius: 0.75rem;
 
