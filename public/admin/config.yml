@@ -14,10 +14,6 @@ display_url: https://margot-relooking.netlify.app
 # Media handling
 media_folder: 'public/images/blog'
 public_folder: '/images/blog'
-media_library:
-  name: 'netlify'
-  max_file_size: 2000000 # 2MB
-  allowed_extensions: ['png', 'jpg', 'jpeg', 'webp']
 
 # Content Collections
 collections:
