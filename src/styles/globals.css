@@ -79,6 +79,121 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+
+  /* Enhanced Typography */
+  .prose {
+    /* Headings */
+    h2 {
+      @apply text-3xl font-display mt-16 mb-8 tracking-tight text-foreground;
+    }
+    h3 {
+      @apply text-2xl font-display mt-12 mb-6 tracking-tight text-foreground;
+    }
+    h4 {
+      @apply text-xl font-display mt-8 mb-4 text-foreground;
+    }
+
+    /* Bold text with highlight effect */
+    strong {
+      @apply font-medium relative;
+      background: linear-gradient(to right, 
+        hsl(var(--primary-light) / 0.15),
+        hsl(var(--primary-light) / 0.05)
+      );
+      background-size: 100% 8px;
+      background-position: left bottom;
+      background-repeat: no-repeat;
+    }
+
+    /* Paragraphs */
+    p {
+      @apply text-lg leading-relaxed text-muted-foreground;
+    }
+
+    /* Lists */
+    ul, ol {
+      @apply my-8 space-y-3;
+    }
+
+    li {
+      @apply text-lg leading-relaxed text-muted-foreground/90;
+    }
+
+    /* Links */
+    a {
+      @apply text-primary hover:text-primary/80 transition-colors no-underline border-b-2 border-primary/10 hover:border-primary/30;
+    }
+
+    /* Special Blockquote */
+    blockquote {
+      @apply my-12 pl-6 border-l-4 border-primary/20 bg-primary/[0.03] py-8 pr-6 rounded-r-lg;
+    }
+
+    blockquote p {
+      @apply text-xl font-display text-foreground italic leading-relaxed;
+    }
+
+    blockquote p:last-child {
+      @apply mb-0;
+    }
+
+    /* Code blocks */
+    pre {
+      @apply my-8 rounded-lg bg-muted p-4;
+    }
+
+    code {
+      @apply text-sm font-mono bg-muted px-1.5 py-0.5 rounded;
+    }
+
+    /* Horizontal rule */
+    hr {
+      @apply my-12 border-primary/10;
+    }
+
+    /* Images */
+    img {
+      @apply rounded-lg my-8;
+    }
+
+    /* Tables */
+    table {
+      @apply my-8;
+    }
+
+    th {
+      @apply font-display text-foreground font-medium;
+    }
+
+    td, th {
+      @apply p-3 border border-border;
+    }
+
+    /* Enhanced List Items */
+    ul {
+      @apply grid gap-6 sm:grid-cols-2 my-12 list-none pl-0;
+    }
+
+    ul li {
+      @apply p-6 rounded-lg border border-primary/10 hover:border-primary/20 transition-colors;
+    }
+
+    /* Brand title styling */
+    ul li strong {
+      @apply block font-display text-xl mb-3;
+      background: none;  /* Remove the highlight effect for titles */
+    }
+
+    /* Instagram links */
+    ul li a {
+      @apply text-primary/80 hover:text-primary no-underline;
+    }
+
+    /* Description text */
+    ul li {
+      @apply text-muted-foreground;
+    }
+  }
 }
 
 @layer base {
