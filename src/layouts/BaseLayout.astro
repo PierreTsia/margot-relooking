@@ -2,13 +2,15 @@
 import '@/styles/globals.css';
 import { Header } from '@/components/Header';
 import { ViewTransitions } from 'astro:transitions';
+import { SEO } from 'astro-seo';
 
 interface Props {
   title: string;
   description: string;
+  image?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, image = '/images/yellow.jpg' } = Astro.props;
 ---
 
 <!doctype html>
@@ -49,7 +51,33 @@ const { title, description } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
     <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <ViewTransitions />
+    <SEO
+      title={title}
+      description={description}
+      openGraph={{
+        basic: {
+          title,
+          type: 'website',
+          image: new URL(image, Astro.site).toString(),
+        },
+        image: {
+          alt: title,
+          width: 1200,
+          height: 630,
+          type: 'image/jpeg',
+        },
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        image: new URL(image, Astro.site).toString(),
+        imageAlt: title,
+      }}
+    />
   </head>
   <body class="text-text-primary bg-[hsl(40,33%,99%)]">
     <Header client:load />
