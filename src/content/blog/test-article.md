@@ -4,7 +4,7 @@ description: Découvrez Dresswing, une solution innovante de location de
   vêtements qui révolutionne notre façon de consommer la mode. Un retour
   d'expérience personnel sur cette alternative écologique et économique à
   l'achat de tenues de cérémonie.
-date: 2024-03-17T23:00:00.000Z
+date: 2018-04-22T00:00:00.000Z
 draft: false
 image: /images/blog/20180425_032547-ahr0chm6.png
 ---
