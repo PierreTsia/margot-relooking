@@ -16,17 +16,17 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    image: z.string(),
-    intro: z.string(),
+    image: z.string().optional(),
+    intro: z.string().optional(),
     mission: z.object({
       title: z.string(),
       description: z.string(),
       objectives: z.array(z.string())
-    }),
+    }).optional(),
     values: z.array(z.object({
       title: z.string(),
       description: z.string()
-    })),
+    })).optional(),
     approach: z.object({
       title: z.string(),
       description: z.string(),
@@ -35,11 +35,11 @@ const pages = defineCollection({
         title: z.string(),
         description: z.string()
       }))
-    }),
+    }).optional(),
     cta: z.object({
       title: z.string(),
       description: z.string()
-    })
+    }).optional()
   })
 });
 
