@@ -13,6 +13,14 @@ import { Textarea } from '@/components/ui/textarea';
   <main class="mx-auto max-w-2xl px-4 py-12">
     <h1 class="mb-8 font-display text-4xl">Contact</h1>
     
+    {/* Hidden form for Netlify to detect during build */}
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="subject" />
+      <textarea name="message"></textarea>
+    </form>
+    
     <form 
       name="contact"
       method="POST"
@@ -127,7 +135,7 @@ import { Textarea } from '@/components/ui/textarea';
           const formData = new FormData(form);
           await fetch('/', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams(formData as any).toString(),
           });
           
