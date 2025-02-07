@@ -4,12 +4,12 @@ const blog = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    description: z.string().optional(),
+    description: z.string(),
     date: z.date(),
-    image: z.string().optional(),
-    draft: z.boolean().optional(),
-    author: z.string().optional(),
-    tags: z.array(z.string()).optional(),
+    image: z.string(),
+    draft: z.boolean().default(false),
+    author: z.string().default('Margot'),
+    tags: z.array(z.string()).default([]),
   }),
 });
 
@@ -18,17 +18,17 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    image: z.string().optional(),
-    intro: z.string().optional(),
+    image: z.string(),
+    intro: z.string(),
     mission: z.object({
       title: z.string(),
       description: z.string(),
       objectives: z.array(z.string())
-    }).optional(),
+    }),
     values: z.array(z.object({
       title: z.string(),
       description: z.string()
-    })).optional(),
+    })),
     approach: z.object({
       title: z.string(),
       description: z.string(),
@@ -37,11 +37,11 @@ const pages = defineCollection({
         title: z.string(),
         description: z.string()
       }))
-    }).optional(),
+    }),
     cta: z.object({
       title: z.string(),
       description: z.string()
-    }).optional()
+    }),
   })
 });
 

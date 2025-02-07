@@ -1,20 +1,33 @@
 ---
 import { getCollection } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
+import { ArticleNavigation } from '@/components/ui/article-navigation';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map((post) => ({
+  const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  
+  return sortedPosts.map((post, index) => ({
     params: { slug: post.slug },
-    props: { post },
+    props: { 
+      post,
+      prevPost: sortedPosts[index + 1],
+      nextPost: sortedPosts[index - 1],
+    },
   }));
 }
 
-const { post } = Astro.props;
+const { post, prevPost, nextPost } = Astro.props;
 const { Content } = await post.render();
 ---
 
 <BlogPost {...post.data}>
   <Content />
+  <ArticleNavigation 
+    client:load
+    prevPost={prevPost}
+    nextPost={nextPost}
+    currentTags={post.data.tags}
+  />
 </BlogPost>
 

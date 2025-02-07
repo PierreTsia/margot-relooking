@@ -28,7 +28,6 @@ collections:
           label: 'Description',
           name: 'description',
           widget: 'text',
-          required: false,
         }
       - { label: 'Date', name: 'date', widget: 'datetime' }
       - { label: 'Brouillon', name: 'draft', widget: 'boolean', default: true }
@@ -36,22 +35,20 @@ collections:
           label: 'Auteur',
           name: 'author',
           widget: 'string',
-          required: false,
           default: 'Margot'
         }
       - {
           label: 'Tags',
           name: 'tags',
           widget: 'list',
-          required: false,
           field: { label: 'Tag', name: 'tag', widget: 'string' },
-          hint: 'Ajoutez des tags pour catégoriser votre article'
+          hint: 'Ajoutez des tags pour catégoriser votre article',
+          default: []
         }
       - {
           label: 'Image principale',
           name: 'image',
           widget: 'image',
-          required: false,
           hint: 'Format recommandé: 1200x675px (16:9). Max 2MB.',
           choose_url: false,
         }

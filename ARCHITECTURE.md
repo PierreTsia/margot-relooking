@@ -305,18 +305,18 @@ src/
 
 ## 6. Questions to Resolve
 
-1. ✓ Do we need to maintain old URL structure for SEO? -> No, using simpler /blog/[slug]
+1. ✓ Do we need to maintain old URL structure for SEOx? -> No, using simpler /blog/[slug]
 2. ✓ Any specific color palette preferences? -> Implemented in globals.css
-3. [ ] Do we need search functionality?
-4. [ ] Analytics requirements?
+3. [ ] Do we need search functionality? Yes, by title and tags
+4. [ ] Analytics requirements? basic analytics
 
 ## 7. Next Features
 
 ### Blog Enhancements
-- [ ] Article Metadata
-  - [ ] Reading time calculation
-  - [ ] Word count display
-  - [ ] Tags system implementation
+- [x] Article Metadata
+  - [x] Reading time calculation
+  - [x] Word count display
+  - [-] Tags system implementation
   - [ ] Tag-based filtering and search
 
 ### Navigation & UX
@@ -328,10 +328,10 @@ src/
 ### Content & Layout
 - [ ] Enhanced Blog Layout
   - [ ] Blog Index Improvements
-    - [ ] 2-3 Grid Layout (2 featured, 3 columns after)
-    - [ ] Modern card design without shadows
-    - [ ] Hover text animation effects
-    - [ ] Author and tags metadata display
+    - [-] 2-3 Grid Layout (2 featured, 3 columns after)
+    - [x] Modern card design without shadows
+    - [-] Hover text animation effects
+    - [x] Author and tags metadata display
   - [ ] Rich text styling (blockquotes, lists)
   - [ ] Image galleries and figure captions
 - [ ] Contact Page
