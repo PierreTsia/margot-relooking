@@ -1,14 +1,13 @@
-import { Button } from './button';
-import type { ButtonProps, buttonVariants } from './button';
+import { Button } from '@/components/ui/button';
+import type { ButtonProps } from '@/components/ui/button';
 import type { VariantProps } from 'class-variance-authority';
 
-interface LinkButtonProps
-  extends React.ComponentPropsWithoutRef<'a'>,
-    VariantProps<typeof buttonVariants> {
+interface LinkButtonProps {
   href: string;
   children: React.ReactNode;
-  variant?: VariantProps<typeof buttonVariants>['variant'];
-  size?: VariantProps<typeof buttonVariants>['size'];
+  variant?: ButtonProps['variant'];
+  size?: ButtonProps['size'];
+  className?: string;
 }
 
 export function LinkButton({ href, children, ...props }: LinkButtonProps) {

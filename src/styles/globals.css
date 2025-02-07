@@ -38,5 +38,9 @@
     --ring: 346 77% 49%;
 
     --radius: 0.75rem;
+
+    /* Update font family variables */
+    --font-display: 'Playfair Display', serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
   }
 }

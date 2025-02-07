@@ -56,7 +56,7 @@ export default {
       fontFamily: {
         sans: ['Cabinet Grotesk', ...fontFamily.sans],
         serif: ['Gambetta', ...fontFamily.serif],
-        display: ['Gambetta', ...fontFamily.serif],
+        display: ['Playfair Display', ...fontFamily.serif],
       },
     },
   },
