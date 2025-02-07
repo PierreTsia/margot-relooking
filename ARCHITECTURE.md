@@ -334,11 +334,11 @@ src/
     - [x] Author and tags metadata display
   - [ ] Rich text styling (blockquotes, lists)
   - [ ] Image galleries and figure captions
-- [ ] Contact Page
-  - [ ] Contact form implementation
-  - [ ] Form validation
-  - [ ] Email notification setup
-  - [ ] Success/Error handling
+- [x] Contact Page
+  - [x] Contact form implementation with Netlify Forms
+  - [x] Form validation and field requirements
+  - [x] Email notification setup
+  - [x] Custom success page (/merci)
 
 ## 8. Future Considerations
 
