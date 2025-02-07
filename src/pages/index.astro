@@ -32,20 +32,15 @@ const latestPosts: CollectionEntry<'blog'>[] = posts
     <section
       class="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden bg-gradient-to-b from-background via-background/90 to-pink-50/20 isolate before:absolute before:inset-0 before:z-0 before:bg-[radial-gradient(circle_at_0%_0%,rgba(219,39,119,0.05),transparent_50%)]"
     >
-      <!-- Decorative elements -->
-      <div class="absolute inset-0 z-0">
-        <div class="absolute left-0 top-1/2 -translate-y-1/2 opacity-[0.08] md:-translate-x-32">
+      <div class="relative z-10 mx-auto max-w-4xl px-4">
+        <!-- Decorative elements -->
+        <div class="absolute -left-[32rem] top-1/2 -translate-y-1/2 opacity-[0.08] md:opacity-[0.12]">
           <img
             src="/images/static/hero-deco.svg"
             alt=""
-            class="h-[400px] w-[400px] rotate-12 md:h-[800px] md:w-[800px]"
+            class="h-[600px] w-[600px] rotate-12 lg:h-[800px] lg:w-[800px]"
           />
         </div>
-        <div class="absolute left-0 top-0 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-[0.12]">
-        </div>
-      </div>
-
-      <div class="relative z-10 mx-auto max-w-4xl px-4">
         <div class="text-center">
           <h1 class="mb-6 font-display text-4xl md:text-6xl">
             Révélez votre <span class="text-primary">meilleure version</span>
